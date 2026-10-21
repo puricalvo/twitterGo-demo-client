@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Alert, Container, Row, Col, Dropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,12 +13,14 @@ import {
 import LeftMenu from "../../components/LeftMenu";
 import { logoutApi } from "../../api/auth";
 import useAuth from "../../hooks/userAuth";
+import TweetModal from "../../components/Modal/TweetModal";
 
 import "./BasicLayout.scss";
 
 export default function BasicLayout(props) {
   const { className, setRefreshCheckLogin, children } = props;
   const user = useAuth();
+  const [showTweetModal, setShowTweetModal] = useState(false);
 
   const logout = () => {
     logoutApi();
@@ -33,6 +35,7 @@ export default function BasicLayout(props) {
           {/* Pasamos showModal y setShowModal al LeftMenu */}
           <LeftMenu
             setRefreshCheckLogin={setRefreshCheckLogin}
+            setShowTweetModal={setShowTweetModal}
           />
         </Col>
 
@@ -53,6 +56,9 @@ export default function BasicLayout(props) {
                 <Dropdown.Item as={Link} to={`/${user?._id}`}>
                   <FontAwesomeIcon icon={faUser} /> Perfil
                 </Dropdown.Item>
+                <Dropdown.Item onClick={() => setShowTweetModal(true)}>
+                  Twittear
+                </Dropdown.Item>
 
                 <Dropdown.Divider />
                 <Dropdown.Item onClick={logout}>
@@ -71,6 +77,11 @@ export default function BasicLayout(props) {
         </Col>
       </Row>
 
+      <TweetModal
+        show={showTweetModal}
+        setShow={setShowTweetModal}
+        readOnly
+      />
     </Container>
   );
 }

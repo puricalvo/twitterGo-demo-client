@@ -15,7 +15,7 @@ import LogoWhite from "../../assets/png/logo-white.png";
 import "./LeftMenu.scss";
 
 export default function LeftMenu(props) {
-  const { setRefreshCheckLogin } = props;
+  const { setRefreshCheckLogin, setShowTweetModal } = props;
   const user = useAuth();
 
   const logout = () => {
@@ -43,9 +43,8 @@ export default function LeftMenu(props) {
 
       <Button
         className="left-menu__compose"
-        disabled
-        title="La publicación está desactivada en esta demo"
-        aria-describedby="demo-read-only-notice"
+        onClick={() => setShowTweetModal(true)}
+        title="Abrir el compositor de publicaciones"
       >
         <span className="text">
           <FontAwesomeIcon icon={faFeather} /> Twittear

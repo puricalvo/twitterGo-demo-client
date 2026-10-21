@@ -10,7 +10,7 @@ import imageCompression from "browser-image-compression";
 import "./TweetModal.scss";
 
 export default function TweetModal(props) {
-  const { show, setShow } = props;
+  const { show, setShow, readOnly = false } = props;
   const [message, setMessage] = useState("");
   const [file, setFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
@@ -45,10 +45,12 @@ export default function TweetModal(props) {
     noKeyboard: true,
     multiple: false,
     onDrop,
+    disabled: readOnly,
   });
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    if (readOnly) return;
     let imageName = "";
 
     if (file) {
@@ -109,6 +111,14 @@ export default function TweetModal(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
+        {readOnly && (
+          <div className="px-3 pt-3">
+            <div className="alert alert-info mb-0">
+              Demo de solo lectura: la publicación y la carga de fotos están
+              desactivadas.
+            </div>
+          </div>
+        )}
         <Form onSubmit={onSubmit}>
           <Form.Control
             as="textarea"
@@ -117,6 +127,8 @@ export default function TweetModal(props) {
             name="mensaje"
             value={message}
             onChange={onChange}
+            disabled={readOnly}
+            aria-label={readOnly ? "Publicar está desactivado en esta demo" : undefined}
           />
 
           {previewUrl && (
@@ -132,7 +144,16 @@ export default function TweetModal(props) {
           )}
 
           <div className="btns-container">
-            <div {...getRootProps()} className="camera-icon">
+            <div
+              {...getRootProps({
+                className: classNames("camera-icon", {
+                  "camera-icon--disabled": readOnly,
+                }),
+                "aria-label": readOnly
+                  ? "Añadir foto está desactivado en esta demo"
+                  : "Añadir foto",
+              })}
+            >
               <input {...getInputProps()} />
               <Camera />
             </div>
@@ -149,10 +170,12 @@ export default function TweetModal(props) {
           <Button
             type="submit"
             disabled={
-              (message.length < 1 && !file) || message.length > maxLength
+              readOnly ||
+              (message.length < 1 && !file) ||
+              message.length > maxLength
             }
           >
-            Twittoar
+            Twittear
           </Button>
         </Form>
       </Modal.Body>

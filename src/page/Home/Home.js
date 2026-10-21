@@ -1,12 +1,7 @@
 import { useState, useEffect } from "react";
-import { Button, Form, Image, Spinner } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faImage } from "@fortawesome/free-solid-svg-icons";
+import { Button, Spinner } from "react-bootstrap";
 import BasicLayout from "../../layout/BasicLayout";
 import ListTweets from "../../components/ListTweets";
-import useAuth from "../../hooks/userAuth";
-import AvatarNoFound from "../../assets/png/avatar-no-found.png";
-import { S3_URL } from "../../utils/constant";
 import { getTweetsFollowersApi } from "../../api/tweet";
 
 import "./Home.scss";
@@ -16,8 +11,6 @@ export default function Home(props) {
   const [tweets, setTweets] = useState(null);
   const [page, setPage] = useState(1);
   const [loadingTewwts, setLoadingTewwts] = useState(false);
-  const user = useAuth();
-  const avatarUrl = user?.avatar ? `${S3_URL}${user.avatar}` : AvatarNoFound;
 
   useEffect(() => {
     getTweetsFollowersApi(page)
@@ -46,35 +39,6 @@ export default function Home(props) {
     <BasicLayout className="home" setRefreshCheckLogin={setRefreshCheckLogin}>
       <div className="home__title">
         <h2>Inicio</h2>
-      </div>
-      <div className="home__composer" aria-label="Crear publicación">
-        <Image className="home__composer-avatar" src={avatarUrl} roundedCircle alt="" />
-        <div className="home__composer-content">
-          <Form.Control
-            as="textarea"
-            rows={2}
-            placeholder="¿Qué estás pensando?"
-            disabled
-            aria-label="Texto de la publicación, desactivado en esta demo"
-          />
-          <div className="home__composer-actions">
-            <Button
-              variant="outline-secondary"
-              disabled
-              title="Añadir fotos está desactivado en esta demo"
-              aria-describedby="demo-read-only-notice"
-            >
-              <FontAwesomeIcon icon={faImage} /> Añadir foto
-            </Button>
-            <Button
-              disabled
-              title="La publicación está desactivada en esta demo"
-              aria-describedby="demo-read-only-notice"
-            >
-              Twittear
-            </Button>
-          </div>
-        </div>
       </div>
       {tweets && <ListTweets tweets={tweets} />}
 

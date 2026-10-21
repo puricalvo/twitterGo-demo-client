@@ -62,7 +62,7 @@ export default function BasicLayout(props) {
             </Dropdown>
           </div>
 
-          <Alert variant="info" className="mb-3">
+          <Alert id="demo-read-only-notice" variant="info" className="mb-3">
             Demo de solo lectura: no se pueden crear ni modificar publicaciones
             o perfiles.
           </Alert>

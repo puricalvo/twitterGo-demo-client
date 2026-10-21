@@ -21,7 +21,7 @@ export default function ListTweets({ tweets }) {
 
 function Tweet({ tweet }) {
   const [userInfo, setUserInfo] = useState(null);
-  const [avatarUrl, setAvatarUrl] = useState(null);
+  const [avatarUrl, setAvatarUrl] = useState(AvatarNoFound);
 
   const version = new Date().getTime();
   useEffect(() => {
@@ -39,13 +39,16 @@ function Tweet({ tweet }) {
   }, [tweet]);
 
   const imageFullUrl = tweet?.imagen ? `${S3_URL}${tweet.imagen}` : null;
+  const displayName =
+    [userInfo?.nombre, userInfo?.apellidos].filter(Boolean).join(" ") ||
+    "Usuario de Twittor";
 
   return (
     <div className="tweet">
       <Image className="avatar" src={avatarUrl} roundedCircle />
       <div className="tweet-content">
         <div className="name">
-          {userInfo?.nombre} {userInfo?.apellidos}
+          {displayName}
           <span className="fecha">{moment(tweet.fecha).calendar()}</span>
         </div>
 

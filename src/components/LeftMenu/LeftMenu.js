@@ -5,7 +5,9 @@ import {
   faUser,
   faUsers,
   faPowerOff,
+  faFeather,
 } from "@fortawesome/free-solid-svg-icons";
+import { Button } from "react-bootstrap";
 import { logoutApi } from "../../api/auth";
 import useAuth from "../../hooks/userAuth";
 import LogoWhite from "../../assets/png/logo-white.png";
@@ -39,6 +41,17 @@ export default function LeftMenu(props) {
         <FontAwesomeIcon icon={faPowerOff} /> <span>Cerrar sesión</span>
       </Link>
 
+      <Button
+        className="left-menu__compose"
+        disabled
+        title="La publicación está desactivada en esta demo"
+        aria-describedby="demo-read-only-notice"
+      >
+        <span className="text">
+          <FontAwesomeIcon icon={faFeather} /> Twittear
+        </span>
+        <span className="icon-mobile" aria-hidden="true">+</span>
+      </Button>
     </div>
   );
 }

@@ -6,13 +6,17 @@ import "./InfoUser.scss";
 
 export default function InfoUser(props) {
   const { user } = props;
+  const name =
+    [user?.nombre, user?.apellidos].filter(Boolean).join(" ") ||
+    "Cuenta de demo";
+  const birthDate = user?.fechaNacimiento
+    ? new Date(user.fechaNacimiento)
+    : null;
 
   return (
     <div className="info-user">
-      <h2 className="name">
-        {user?.nombre} {user?.apellidos}
-      </h2>
-      <p className="email">{user?.email}</p>
+      <h2 className="name">{name}</h2>
+      {user?.email && <p className="email">{user.email}</p>}
       {user?.biografia && <div className="description">{user?.biografia}</div>}
 
       <div className="more-info">
@@ -32,10 +36,12 @@ export default function InfoUser(props) {
             <Link /> {user.sitioweb}
           </a>
         )}
-        {user?.fechaNacimiento && (
+        {birthDate &&
+          !Number.isNaN(birthDate.getTime()) &&
+          birthDate.getFullYear() > 1 && (
           <p>
             <DateBirth />
-            {moment(user.fechaNacimiento)
+            {moment(birthDate)
               .locale("es", localization)
               .format("LL")}
           </p>

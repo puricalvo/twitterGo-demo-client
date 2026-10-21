@@ -72,7 +72,10 @@ export default function User(props) {
     <BasicLayout className="user" setRefreshCheckLogin={setRefreshCheckLogin}>
       <div className="user__title">
         <h2>
-          {user ? `${user.nombre} ${user.apellidos}` : "Este usuario no existe"}
+          {user
+            ? [user.nombre, user.apellidos].filter(Boolean).join(" ") ||
+              "Cuenta de demo"
+            : "Este usuario no existe"}
         </h2>
       </div>
       <BannerAvatar

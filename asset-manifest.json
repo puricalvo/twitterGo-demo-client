@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/twitterGo-demo-client/static/css/main.41320748.css",
-    "main.js": "/twitterGo-demo-client/static/js/main.56101771.js",
+    "main.css": "/twitterGo-demo-client/static/css/main.3542aac9.css",
+    "main.js": "/twitterGo-demo-client/static/js/main.d424bafb.js",
     "static/js/453.4f7cd8d5.chunk.js": "/twitterGo-demo-client/static/js/453.4f7cd8d5.chunk.js",
     "static/media/error-404.png": "/twitterGo-demo-client/static/media/error-404.fe6e5b62fe9e18403f7c.png",
     "static/media/logo.png": "/twitterGo-demo-client/static/media/logo.0d659bb2e036e6fdfb2c.png",
@@ -12,12 +12,12 @@
     "static/media/link.svg": "/twitterGo-demo-client/static/media/link.9388998624eb8da0172cc3baa0229e68.svg",
     "static/media/close.svg": "/twitterGo-demo-client/static/media/close.da5c42223be72e07b42078ba244d26c0.svg",
     "index.html": "/twitterGo-demo-client/index.html",
-    "main.41320748.css.map": "/twitterGo-demo-client/static/css/main.41320748.css.map",
-    "main.56101771.js.map": "/twitterGo-demo-client/static/js/main.56101771.js.map",
+    "main.3542aac9.css.map": "/twitterGo-demo-client/static/css/main.3542aac9.css.map",
+    "main.d424bafb.js.map": "/twitterGo-demo-client/static/js/main.d424bafb.js.map",
     "453.4f7cd8d5.chunk.js.map": "/twitterGo-demo-client/static/js/453.4f7cd8d5.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.41320748.css",
-    "static/js/main.56101771.js"
+    "static/css/main.3542aac9.css",
+    "static/js/main.d424bafb.js"
   ]
 }

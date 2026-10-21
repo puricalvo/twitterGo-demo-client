@@ -1,0 +1,135 @@
+@import "../../../scss/index.scss";
+
+.tweet-modal {
+  .modal-content {
+    background-color: $background-grey-dark;
+    border-radius: 25px;
+    overflow: hidden;
+
+    .modal-header {
+      border-bottom: 1px solid $border-grey;
+      padding: 15px;
+
+      .modal-title {
+        svg {
+          width: 15px;
+          height: 15px;
+          fill: $primary;
+          margin-left: 10px;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    .modal-body {
+      padding: 0;
+
+      form {
+        textarea {
+          background-color: $background-grey-dark;
+          border: 0;
+          font-size: 20px;
+          color: $font-light;
+          padding: 10px 20px;
+          resize: none;
+          &:focus { box-shadow: none; }
+        }
+
+        .image-preview-container {
+          position: relative;
+          margin-top: 10px;
+
+          .image-preview {
+            width: 100%;
+            // --- CAMBIOS PARA RESPONSIVE ---
+            height: 15vh;         // En móviles ocupa el 30% de la altura de la pantalla
+            max-height: 250px;    // En pantallas grandes no pasará de 400px
+            min-height: 100px;    // Nunca será más pequeña de 200px para que se vea algo
+            // -------------------------------
+            
+            border-radius: 20px;
+            background-size: contain; 
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease; // Para que el cambio de tamaño sea fluido
+          }
+
+          .remove-image {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            z-index: 10; // Asegura que la X esté siempre encima
+
+            svg {
+              width: 18px;
+              height: 18px;
+              fill: $primary;
+            }
+
+            &:hover {
+              background-color: $primary;
+            }
+          }
+        }
+
+        
+        .btns-container {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0 20px;
+          margin-bottom: 5px;
+
+          .camera-icon {
+            cursor: pointer;
+            outline: none;
+            
+            svg {
+              width: 25px;
+              fill: $font-light; 
+              transition: fill 0.2s ease;
+
+              @media (min-width: 768px) {
+                width: 30px; 
+              }
+
+              &:hover {
+                fill: $primary; 
+              }
+            }
+          }
+        }
+
+        .count {
+          margin: 15px; 
+          color: $font-light;
+          font-weight: bold;
+          &.error {
+            color: $danger !important;
+          }
+        }
+
+        button {
+          width: 100%;
+          height: 60px;
+          font-weight: bold;
+          font-size: 18px;
+          margin-top: 5px;
+          border: 0;
+        }
+      }
+    }
+  }
+}

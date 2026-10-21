@@ -1,0 +1,382 @@
+@import "../../scss/index.scss";
+
+.signin-signup {
+  overflow-x: hidden;
+
+  &__left {
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    background-color: $primary-light;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+    padding: 20px;
+
+    // El logo azul
+    img {
+      position: static;
+      width: 55px; 
+      height: auto;
+      margin-bottom: 15px; 
+      z-index: 2;
+
+      // ESTILO MÓVIL (Imagen 1)
+      @media (max-width: 767px) {
+        margin-top: -103px; // Sube el pájaro solo en móvil
+        margin-bottom: 16px; // nuevo
+      }
+
+      // ESTILO PC (Imagen 3)
+      @media (min-width: 768px) {
+        position: absolute;
+        right: -35%;
+        top: 50%;
+        transform: translateY(-50%); // Centrado perfecto
+        width: 1070px;
+        height: 1070px;
+        margin-top: 0; // Quitamos el margen negativo del móvil
+        margin-bottom: 0;
+      }
+    }
+
+    div {
+      z-index: 2;
+      padding: 0;
+      width: 100%;
+      max-width: 500px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      // Subir los textos solo en móvil
+      @media (max-width: 767px) {
+        margin-top: 5px; 
+      }
+
+      h2 {
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        text-align: left;
+        font-size: 14px; 
+        margin-bottom: 15px;
+
+        @media (min-width: 768px) {
+          font-size: 30px;
+          margin-bottom: 40px;
+          margin-top: 0; // Aseguramos que en PC no tenga margen negativo
+        }
+
+        svg {
+          margin-right: 10px;
+          width: 20px !important; 
+          font-size: 18px;
+          
+          @media (min-width: 768px) {
+            width: 40px !important;
+            font-size: 30px;
+            margin-right: 20px;
+          }
+        }
+      }   
+    }
+  }
+
+  &__right {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+
+    div {
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+
+      img {
+        width: 50px;
+        margin-bottom: 15px;
+        @media (min-width: 768px) { width: 100px; }
+      }
+
+      h2 {
+        font-weight: bold;
+        font-size: 18px; 
+        margin-bottom: 20px;
+        @media (min-width: 768px) { font-size: 30px; }
+      }
+
+      h3 {
+        font-weight: bold;
+        font-size: 14px;
+        margin-bottom: 15px;
+        @media (min-width: 768px) { font-size: 20px; }
+      }
+
+      button {
+        width: 100%;
+        border-radius: 50px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        font-size: 14px;
+        padding: 8px 0;
+        
+        @media (min-width: 768px) {
+          font-size: 20px;
+          padding: 10px 0;
+        }
+      }
+    }
+  }
+}
+
+
+/* @import "../../scss/index.scss";
+
+.signin-signup {
+  // Ajuste general para que no haya scroll horizontal
+  overflow-x: hidden; 
+
+ &__left {
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    background-color: $primary-light;
+    display: flex;
+    flex-direction: column; // Alineamos en vertical para que el logo esté arriba
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+
+    img {
+        // --- CAMBIO CLAVE PARA MÓVIL ---
+        position: static;   // Quita el comportamiento de "flotar" a la derecha
+        width: 60px;        // Tamaño similar al logo blanco
+        height: auto;
+        margin-bottom: 30px; // Espacio entre el logo y los textos
+        right: auto;        // Reseteamos la posición que tenía antes
+
+        // --- VOLVER AL ESTILO GIGANTE EN PC ---
+        @media (min-width: 768px) {
+            position: absolute;
+            right: -35%;
+            width: 1070px;
+            height: 1070px;
+            margin-bottom: 0;
+        }
+    }
+
+    div {
+      z-index: 1;
+      padding: 10px; // Menos espacio en móvil
+
+      h2 {
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        
+        // Texto muy pequeño en móvil, normal en PC
+        font-size: 14px; 
+        margin-bottom: 20px;
+        @media (min-width: 768px) {
+          font-size: 30px;
+          margin-bottom: 40px;
+        }
+
+        svg {
+          margin-right: 10px;
+          // Icono pequeño en móvil
+          width: 20px !important; 
+          font-size: 18px;
+          
+          @media (min-width: 768px) {
+            width: 40px !important;
+            font-size: 30px;
+            margin-right: 20px;
+          }
+        }
+      }
+    }
+  }
+
+  &__right {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+
+    div {
+      width: 100%; // Que use todo el ancho de su columna
+      max-width: 500px;
+      margin: 0 auto;
+
+      img {
+        width: 50px;
+        margin-bottom: 15px;
+        @media (min-width: 768px) { width: 100px; margin-bottom: 20px; }
+      }
+
+      h2 {
+        font-weight: bold;
+        font-size: 18px; // Tamaño mini para que no salte de renglón
+        margin-bottom: 20px;
+        @media (min-width: 768px) { font-size: 40px; margin-bottom: 70px; }
+      }
+
+      h3 {
+        font-weight: bold;
+        font-size: 14px;
+        margin-bottom: 15px;
+        @media (min-width: 768px) { font-size: 20px; margin-bottom: 30px; }
+      }
+
+      button {
+        display: block;
+        width: 100%;
+        border-radius: 50px;
+        font-weight: bold;
+        
+        // Botones más pequeños en móvil
+        font-size: 14px;
+        padding: 8px 0;
+        
+        @media (min-width: 768px) {
+          font-size: 20px;
+          padding: 10px 0;
+        }
+
+        &:first-of-type {
+          margin-bottom: 15px;
+        }
+      }
+    }
+  }
+} */
+
+/*  @import "../../scss/index.scss";
+
+.signin-signup {
+  overflow-x: hidden;
+
+  &__left {
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    background-color: $primary-light;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+    padding: 20px;
+
+    // El logo azul (pájaro pequeño en móvil)
+    img {
+      position: static;
+      width: 50px; 
+      height: auto;
+      margin-bottom: 15px; 
+      z-index: 2;
+
+      // --- AJUSTE EXTRA PARA SUBIR EL PÁJARO EN MÓVIL ---
+      @media (max-width: 767px) {
+        margin-top: -90px; // Subimos un poco más el pájaro
+      }
+
+      // El pájaro gigante de fondo para PC
+      @media (min-width: 768px) {
+        position: absolute;
+        right: -35%;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1070px;
+        height: 1070px;
+        margin-bottom: 0;
+      }
+    }
+
+    div {
+      z-index: 2;
+      padding: 0;
+      width: 100%;
+      max-width: 500px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+       h2 {
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        text-align: left;
+        font-size: 14px; 
+        margin-bottom: 15px;
+        @media (min-width: 768px) {
+          font-size: 30px;
+          margin-bottom: 40px;
+          margin-top: -60px;
+        }
+
+        svg {
+          margin-right: 10px;
+          // Icono pequeño en móvil
+          width: 20px !important; 
+          font-size: 18px;
+          
+          @media (min-width: 768px) {
+            width: 40px !important;
+            font-size: 30px;
+            margin-right: 20px;
+          }
+        }
+      }  
+  }
+}
+
+  &__right {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+
+    div {
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+
+      img {
+        width: 50px;
+        margin-bottom: 15px;
+        @media (min-width: 768px) { width: 100px; }
+      }
+
+      h2 {
+        font-weight: bold;
+        font-size: 18px; 
+        margin-bottom: 20px;
+        @media (min-width: 768px) { font-size: 40px; }
+      }
+
+      h3 {
+        font-weight: bold;
+        font-size: 14px;
+        margin-bottom: 15px;
+        @media (min-width: 768px) { font-size: 30px; }
+      }
+
+      button {
+        width: 100%;
+        border-radius: 50px;
+        font-weight: bold;
+        margin-bottom: 15px;
+      }
+    }
+  }
+}
+ */
+ 

@@ -1,0 +1,94 @@
+
+@import "../../scss/index.scss";
+
+@import "../../scss/index.scss";
+
+.users {
+  &__title {
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    @media (max-width: 500px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    h2 {
+      font-size: 22px;
+      margin-bottom: 0;
+      font-weight: bold;
+
+      /* --- ÚNICO CAMBIO: Desplazamos solo el texto del título --- */
+      padding-left: 60px; // Espacio para la hamburguesa en móvil
+
+      @media (min-width: 768px) {
+        padding-left: 0; // En PC vuelve a su sitio
+      }
+      /* --------------------------------------------------------- */
+
+      @media (max-width: 500px) { margin-bottom: 10px; }
+    }
+
+    input {
+      width: 50%;
+      @media (max-width: 500px) { width: 100%; }
+      
+      border-radius: 50px;
+      border: 0;
+      background-color: $background-dark-light;
+      padding: 5px 20px;
+      color: $font-light;
+
+      &:focus { outline: none; }
+    }
+  }
+
+  &__options {
+    display: flex !important;
+
+    .btn.btn-primary {
+      flex: 1; // Hace que los dos botones midan lo mismo siempre
+      background-color: transparent !important;
+      font-weight: bold;
+      border: 0;
+      border-bottom: 1px solid $border-grey;
+      padding: 15px 0;
+      border-radius: 0;
+      font-size: 14px; // Un pelín más pequeño para que no se amontone
+      @media (min-width: 768px) { font-size: 16px; }
+
+      &:hover {
+        background-color: rgba(29, 161, 242, 0.1) !important;
+      }
+      &.active {
+        border-bottom: 3px solid $primary;
+        color: $primary !important; // Para que se note cuál está activo
+      }
+    }
+  }
+
+  // ... el resto (__loading y load-more) se queda igual que lo tienes
+  &__loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 50px;
+    > div { margin-bottom: 10px; }
+  }
+
+  .load-more.btn.btn-primary {
+    display: flex;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: transparent;
+    border: 0;
+    &:hover, &:focus {
+      background-color: transparent !important;
+      color: $primary;
+    }
+  }
+}
